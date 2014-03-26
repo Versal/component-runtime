@@ -1,0 +1,30 @@
+{
+  "name": "versal-runtime",
+  "version": "0.1.2",
+  "description": "Runtime for Versal flavor of custom elements",
+  "main": "versal-runtime.js",
+  "scripts": {
+    "test": "mocha test/*.coffee --compilers coffee:coffee-script/register",
+    "prepublish": "npm run build",
+    "build": "browserify -s VersalRuntime src/index.js > ./versal-runtime.js && ./node_modules/uglify-js/bin/uglifyjs versal-runtime.js --source-map versal-runtime.map.js -o versal-runtime.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Versal/versal-runtime.git"
+  },
+  "keywords": [
+    "versal",
+    "runtime",
+    "web",
+    "components"
+  ],
+  "author": "Andrey Mereskin <am@versal.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Versal/versal-runtime/issues"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.7.1",
+    "uglify-js": "~2.4.13"
+  }
+}
