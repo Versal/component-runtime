@@ -12,7 +12,7 @@ var IframeLauncher = function(iframe, origin){
   this.origin = origin || window.location.origin;
 };
 
-var KNOWN_MESSAGES = ['setAttribute', 'attached', 'detached'];
+var OUTGOING_MESSAGES = ['setAttribute', 'attached', 'detached'];
 
 IframeLauncher.prototype = {
 
@@ -27,9 +27,7 @@ IframeLauncher.prototype = {
   // Send attribute updates when individual property sheet fields change
   sendAttribute: function(name, value) {
     if(name) {
-      var attr = {};
-      attr[name] = value;
-      this.send('setAttribute', attr);
+      this.send('setAttribute', { name: name, value: value });
     }
   },
 
@@ -43,7 +41,7 @@ IframeLauncher.prototype = {
   },
 
   isKnownMessage: function(name){
-    return KNOWN_MESSAGES.indexOf(name) >= 0;
+    return OUTGOING_MESSAGES.indexOf(name) >= 0;
   },
 
   // Wrap name and detail in envelope

@@ -19,18 +19,18 @@ describe 'Versal Gadget API', ->
 
     message = recipient.postMessage.getCall(0).args[0]
     assert.equal message.name, 'setAttribute'
-    assert.equal message.detail.foo, 1
+    assert.deepEqual message.detail, { name: 'foo', value: 1 }
 
-  it 'multiple attributes shall pass', ->
+  it 'many attributes shall pass', ->
     gadget.sendAttributes { foo: 2, bar: 3 }
 
     message1 = recipient.postMessage.getCall(0).args[0]
     assert.equal message1.name, 'setAttribute'
-    assert.equal message1.detail.foo, 2
+    assert.deepEqual message1.detail, { name: 'foo', value: 2 }
 
     message2 = recipient.postMessage.getCall(1).args[0]
     assert.equal message2.name, 'setAttribute'
-    assert.equal message2.detail.bar, 3
+    assert.deepEqual message2.detail, { name: 'bar', value: 3 }
 
   it 'attached shall pass', ->
     gadget.send 'attached'
