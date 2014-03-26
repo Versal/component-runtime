@@ -12,7 +12,9 @@ VersalGadget.prototype = {
   },
 
   sendAttribute: function(name, value) {
-    this.send('setAttribute', { name: value });
+    if(name) {
+      this.send('setAttribute', { name: value });
+    }
   },
 
   sendAttached: function(){
