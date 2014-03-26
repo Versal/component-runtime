@@ -1,0 +1,19 @@
+<html>
+<head>
+<script src="../versal-runtime.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  var N = new VersalRuntime.Muni({ iframe: document.querySelector('iframe') });
+
+  N.addEventListener('setAttribute', function(attr){
+    console.log('N received attribute', attr.name, attr.value);
+    N.sendAttribute('from', 'N');
+  });
+})
+</script>
+</head>
+<body>
+<iframe src="./gadget.html"></iframe>
+<p>If it works, you should see two messages in console: N received attribute from J and J received attribute from N</p>
+</body>
+</html>

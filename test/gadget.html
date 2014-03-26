@@ -1,0 +1,19 @@
+<html>
+<head>
+<script src="../versal-runtime.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function(){
+  var J = new VersalRuntime.Muni();
+
+  J.addEventListener('setAttribute', function(attr){
+    console.log('J received attribute', attr.name, attr.value);
+  });
+
+  J.sendAttribute('from', 'J');
+})
+</script>
+</head>
+<body>
+¡Hola, bebe!
+</body>
+</html>

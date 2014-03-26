@@ -1,47 +1,45 @@
 // Represents player for the gadget
-var VersalPlayer = function(origin){
-  this.attributes = {};
-
-  window.addEventListener('message', function(evt){
-    if(evt.origin == origin) {
-      switch(evt.data.name) {
-        case 'setAttribute':
-          this.onAttributeChanged(evt.data.detail);
-          break;
-
-        case 'attached':
-          this.onAttached();
-          break;
-      }
-    }
-  }.bind(this));
+var VersalPlayerAPI = function(origin) {
+  window.addEventListener('message', this.onMessage.bind(this, origin));
 };
 
-VersalPlayer.prototype = {
-  onAttributeChanged: function(detail){
-    Object.getOwnPropertyNames(detail).forEach(function(key){
-      var old = this.attributes[key];
-      var current = detail[key];
+VersalPlayerAPI.prototype = {
 
-      if(this.attributeChangedCallback) {
-        this.attributeChangedCallback(key, old, current);
-      }
-    }.bind(this));
-  },
+  onMessage: function(origin, evt) {
+    // Only react to the known messages and from the player origin
+    if(evt.origin == origin && evt.data && evt.data.name){
 
-  onAttached: function(){
-    if(this.attachedCallback) {
-      this.attachedCallback();
+    var callback = this[this.getCallbackName(evt.data)];
+    if(callback) {
+      callback(evt.data.detail);
     }
   },
 
+  callbackName: function(message) {
+    return 'on' + message.name[0].toUpperCase() + messageName.slice(1);
+  },
+
+  // Send arbitrary message. Name has to be in KNOWN_MESSAGES
   send: function(name, detail){
-    var data = { name: name };
-    if(detail) {
-      data.detail = detail;
+    if(this.isKnownMessage(name)) {
+      // We don't need to JSON.stringfy our messages
+      // since postMessage handles that for us
+      this.messageTarget.postMessage(this.createMessage(name, detail), this.origin);
     }
-    window.parent.postMessage(data, window.location.origin);
+  },
+
+  isKnownMessage: function(name){
+    return OUTGOING_MESSAGES.indexOf(name) >= 0;
+  },
+
+  // Wrap name and detail in envelope
+  createMessage: function(name, detail) {
+    var message = { name: name };
+    if(detail) {
+      message.detail = detail;
+    }
+    return message;
   }
 };
 
-module.exports = VersalPlayer;
+module.exports = VersalPlayerAPI;
