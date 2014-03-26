@@ -8,8 +8,9 @@ describe 'Versal Gadget API', ->
   recipient = null
 
   beforeEach ->
-    recipient = postMessage: sinon.spy()
-    gadget = new GadgetAPI recipient, 'localhost'
+    iframe = contentWindow: { postMessage: sinon.spy() }
+    recipient = iframe.contentWindow
+    gadget = new GadgetAPI iframe, 'localhost'
 
   # To work with attributes we use "sendAttribute" instead of
   # "setAttribute" to avoid conflicts with native setAttribute method
