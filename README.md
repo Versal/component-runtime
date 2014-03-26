@@ -10,6 +10,8 @@ Includes:
 
 Usage:
 
+	npm install -g browserify
+
     npm install versal-runtime --save
 
     in your HTML file:
