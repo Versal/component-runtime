@@ -24,7 +24,7 @@ VersalGadget.prototype = {
     if(detail) {
       data.detail = detail;
     }
-    this.iframe.contentWindow.postMessage(data, 'https://versal.io');
+    this.iframe.contentWindow.postMessage(data, window.location.origin);
   }
 };
 

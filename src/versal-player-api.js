@@ -1,7 +1,7 @@
 // Represents player for the gadget
-var VersalPlayer = function(){
+var VersalPlayer = function(origin){
   window.addEventListener('message', function(evt){
-    if(evt.origin == 'https://versal.io') {
+    if(evt.origin == origin) {
       console.log(evt);
     }
   });
