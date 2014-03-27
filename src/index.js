@@ -8,9 +8,8 @@ var VersalRuntime = function(){
 };
 
 VersalRuntime.prototype = {
-  Muni: require('./muni'),
-  //GadgetAPI: require('./versal-gadget-api'),
-  //PlayerAPI: require('./versal-player-api'),
+  //Muni: require('./muni'),
+  PlayerAPI: require('./versal-player-api.coffee'),
 
   registerElementDeclaration: function(elt) {
     this._elementDeclarations[elt.getAttribute('name')] = new VersalElement(elt);

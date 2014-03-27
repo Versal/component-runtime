@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha test/*.coffee --compilers coffee:coffee-script/register",
     "prepublish": "npm run build",
-    "build": "browserify -s VersalRuntime src/index.js > ./versal-runtime.js && ./node_modules/uglify-js/bin/uglifyjs versal-runtime.js --source-map versal-runtime.map.js -o versal-runtime.min.js"
+    "build": "browserify -t coffeeify -s VersalRuntime src/index.js > ./versal-runtime.js && ./node_modules/uglify-js/bin/uglifyjs versal-runtime.js --source-map versal-runtime.map.js -o versal-runtime.min.js"
   },
   "repository": {
     "type": "git",
@@ -25,10 +25,9 @@
   },
   "devDependencies": {
     "coffee-script": "~1.7.1",
+    "coffeeify": "^0.6.0",
     "sinon": "^1.9.0",
     "uglify-js": "~2.4.13"
   },
-  "dependencies": {
-    "events": "^1.0.0"
-  }
+  "dependencies": {}
 }

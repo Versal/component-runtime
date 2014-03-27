@@ -101,18 +101,3 @@ Object.getOwnPropertyNames(EventEmitter.prototype).forEach(function(name){
 });
 
 module.exports = Muni;
-/*
-if(typeof(window) != 'undefined') {
-  // Listen for messages from iframes and re-trigger them on iframe itself
-  window.addEventListener('message', function(evt){
-    var iframe = evt.source.frameElement;
-
-    //TODO: Maybe check origin?
-    if(iframe) {
-      if(evt.data && evt.data.name) {
-        iframe.dispatchEvent(new CustomEvent('message', evt.data))
-      };
-    }
-  });
-};
-*/
