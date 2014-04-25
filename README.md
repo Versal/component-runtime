@@ -1,4 +1,4 @@
-# Versal-runtime
+# Versal-runtime [![Build Status](https://travis-ci.org/Versal/versal-runtime.svg?branch=master)](https://travis-ci.org/Versal/versal-runtime)
 
 Versal-runtime allows to launch Versal Elements. Essentially, this is a collection of polyfills + versal-element.
 
