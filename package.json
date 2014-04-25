@@ -4,7 +4,6 @@
   "description": "Runtime for Versal flavor of custom elements",
   "main": "versal-runtime.js",
   "scripts": {
-    "test": "mocha test/*.coffee --compilers coffee:coffee-script/register",
     "prepublish": "npm run build",
     "build": "browserify -t coffeeify -s VersalRuntime src/index.js > ./dist/versal-runtime.js && ./node_modules/uglify-js/bin/uglifyjs dist/versal-runtime.js --source-map dist/versal-runtime.map.js -o dist/versal-runtime.min.js"
   },
