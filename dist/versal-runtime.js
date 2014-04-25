@@ -176,18 +176,16 @@
 },{}],2:[function(require,module,exports){
 // CustomEvent constructor polyfill from MDN
 (function () {
-  if(!('CustomEvent' in window)) {
-    function CustomEvent ( event, params ) {
-      params = params || { bubbles: false, cancelable: false, detail: undefined };
-      var evt = document.createEvent( 'CustomEvent' );
-      evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
-      return evt;
-     };
+  function CustomEvent ( event, params ) {
+    params = params || { bubbles: false, cancelable: false, detail: undefined };
+    var evt = document.createEvent( 'CustomEvent' );
+    evt.initCustomEvent( event, params.bubbles, params.cancelable, params.detail );
+    return evt;
+   };
 
-    CustomEvent.prototype = window.Event.prototype;
+  CustomEvent.prototype = window.Event.prototype;
 
-    window.CustomEvent = CustomEvent;
-  };
+  window.CustomEvent = CustomEvent;
 })();
 
 },{}],3:[function(require,module,exports){
