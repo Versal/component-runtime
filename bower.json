@@ -1,6 +1,6 @@
 {
   "name": "versal-runtime",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "homepage": "https://github.com/Versal/versal-runtime",
   "authors": [
     "Versal Team <support@versal.com>"
@@ -16,7 +16,9 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "src",
+    "polyfills",
+    "package.json",
+    "bower.json"
   ]
 }
