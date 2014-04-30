@@ -1,8 +1,8 @@
 {
   "name": "versal-runtime",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "Runtime for Versal flavor of custom elements",
-  "main": "versal-runtime.js",
+  "main": "dist/runtime.min.js",
   "scripts": {
     "prepublish": "npm run build",
     "test": "echo 'run static web server and open test/index.html'",
