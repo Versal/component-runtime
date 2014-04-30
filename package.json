@@ -20,7 +20,7 @@
     "components"
   ],
   "author": "Andrey Mereskin <am@versal.com>",
-  "license": "BSD-2-Clause",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Versal/component-runtime/issues"
   },
