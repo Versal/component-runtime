@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="../dist/runtime.min.js"></script>
+<link rel="import" href="test.html" />
+</head>
+<body>
+
+You should see white "BARBUZZ" on green background. If you see something different, things are broken.
+
+<foo-bar data-foo="BAR">Default content</foo-bar>
+
+<script>
+document.querySelector('foo-bar').addEventListener('fooevent', function(e){
+  e.target.resolve().then(function(result){
+    e.target.textContent += result;
+  });
+});
+</script>
+</body>
+</html>

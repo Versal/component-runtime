@@ -1,6 +1,6 @@
-# Versal-runtime [![Build Status](https://travis-ci.org/Versal/versal-runtime.svg?branch=master)](https://travis-ci.org/Versal/versal-runtime)
+# Versal component runtime [![Build Status](https://travis-ci.org/Versal/component-runtime.svg?branch=master)](https://travis-ci.org/Versal/component-runtime)
 
-Versal-runtime allows to launch Versal Elements. Essentially, this is a collection of polyfills + versal-element.
+versal-component-runtime allows to launch Versal Elements. Essentially, this is a collection of polyfills.
 
 Includes:
 - Polymer HTML Imports
@@ -10,16 +10,14 @@ Includes:
 
 Usage:
 
-    npm install versal-runtime --save
+    bower install versal-component-runtime
 
     in your HTML file:
 
-    <script src="./node_modules/versal-runtime/versal-runtime.min.js"></script>
+    <script src="bower_components/versal-component-runtime/dist/runtime.min.js"></script>
 
 To build:
 
     npm run build
 
-To test:
-
-    npm test
+To test launch static web server and open test/index.html

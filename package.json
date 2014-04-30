@@ -5,11 +5,13 @@
   "main": "versal-runtime.js",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "browserify -t coffeeify -s VersalRuntime src/index.js > ./dist/versal-runtime.js && ./node_modules/uglify-js/bin/uglifyjs dist/versal-runtime.js --source-map dist/versal-runtime.map.js -o dist/versal-runtime.min.js"
+    "test": "echo 'run static web server and open test/index.html'",
+    "build": "./node_modules/uglify-js/bin/uglifyjs polyfills/ecma-promise.js polyfills/html-custom-event.js polyfills/html-template-element.js polyfills/polymer-custom-elements.js polyfills/polymer-html-imports.js -o dist/runtime.min.js --screw-ie8",
+    "update-polymer": "cp ../HtMLImports/html-imports.min.js ./polyfills/polymer-html-imports.js && cp ../CustomElements/custom-elements.min.js ./polyfills/polymer-custom-elements.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Versal/versal-runtime.git"
+    "url": "https://github.com/Versal/component-runtime.git"
   },
   "keywords": [
     "versal",
@@ -20,15 +22,9 @@
   "author": "Andrey Mereskin <am@versal.com>",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/Versal/versal-runtime/issues"
+    "url": "https://github.com/Versal/component-runtime/issues"
   },
   "devDependencies": {
-    "browserify": "^3.44.2",
-    "coffee-script": "~1.7.1",
-    "coffeeify": "^0.6.0",
-    "mocha": "^1.18.2",
-    "sinon": "^1.9.0",
     "uglify-js": "~2.4.13"
-  },
-  "dependencies": {}
+  }
 }
