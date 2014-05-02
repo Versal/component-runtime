@@ -1,0 +1,19 @@
+<style>
+test-component {
+  display: block;
+  padding: 20px;
+  background: green;
+  color: white;
+  height: 100px;
+}
+</style>
+
+<script>
+var TestComponentPrototype = Object.create(HTMLElement.prototype);
+
+TestComponentPrototype.attachedCallback = function() {
+  this.innerHTML = this.getAttribute('data-new-content');
+};
+
+document.registerElement('test-component', {prototype: TestComponentPrototype});
+</script>
