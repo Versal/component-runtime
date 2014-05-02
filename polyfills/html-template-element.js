@@ -26,7 +26,7 @@
 
   function createTemplateHostDocument() {
     // Create inert document to host template's document fragments
-    HTMLTemplateElement.prototype._templateHostDocument = document.implementation.createHTMLDocument();
+    HTMLTemplateElement.prototype._templateHostDocument = document.implementation.createHTMLDocument('');
   };
 
   function polyfillContentProperty() {
