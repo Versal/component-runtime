@@ -1,6 +1,6 @@
 {
-  "name": "versal-runtime",
-  "version": "0.2.0",
+  "name": "versal-component-runtime",
+  "version": "0.2.1",
   "description": "Runtime for Versal flavor of custom elements",
   "main": "dist/runtime.min.js",
   "scripts": {
