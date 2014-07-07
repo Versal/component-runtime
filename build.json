@@ -1,0 +1,8 @@
+[
+  "polyfills/requestAnimationFrame.js",
+  "polyfills/ecma-promise.js",
+  "polyfills/html-custom-event.js",
+  "polyfills/polymer-custom-elements.js",
+  "polyfills/html-template-element.js",
+  "polyfills/polymer-html-imports.js"
+]

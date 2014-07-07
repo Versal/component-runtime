@@ -20,5 +20,8 @@
     "test",
     "package.json",
     "bower.json"
-  ]
+  ],
+  "devDependencies": {
+    "tools": "Polymer/tools#master"
+  }
 }
