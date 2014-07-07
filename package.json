@@ -4,8 +4,7 @@
   "description": "Runtime for Versal flavor of custom elements",
   "main": "dist/runtime.min.js",
   "scripts": {
-    "test": "karma start --single-run",
-    "update-polymer": "cp ../HtMLImports/html-imports.min.js ./polyfills/polymer-html-imports.js && cp ../CustomElements/custom-elements.min.js ./polyfills/polymer-custom-elements.js"
+    "test": "karma start --single-run"
   },
   "repository": {
     "type": "git",
@@ -17,7 +16,9 @@
     "web",
     "components"
   ],
-  "author": "Andrey Mereskin <am@versal.com>",
+  "authors": [
+    "Versal Team <support@versal.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Versal/component-runtime/issues"
