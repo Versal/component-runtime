@@ -6,7 +6,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "test": "karma start --browsers Firefox --single-run",
-    "build": "./node_modules/uglify-js/bin/uglifyjs polyfills/ecma-promise.js polyfills/html-custom-event.js polyfills/html-template-element.js polyfills/polymer-custom-elements.js polyfills/polymer-html-imports.js -o dist/runtime.min.js --screw-ie8",
+    "build": "./node_modules/uglify-js/bin/uglifyjs polyfills/ecma-promise.js polyfills/html-custom-event.js polyfills/polymer-custom-elements.js polyfills/html-template-element.js polyfills/polymer-html-imports.js -o dist/runtime.min.js --screw-ie8",
     "update-polymer": "cp ../HtMLImports/html-imports.min.js ./polyfills/polymer-html-imports.js && cp ../CustomElements/custom-elements.min.js ./polyfills/polymer-custom-elements.js"
   },
   "repository": {
