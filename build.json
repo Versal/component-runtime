@@ -1,0 +1,8 @@
+[
+  "bower_components/requestAnimationFrame/app/requestAnimationFrame.js",
+  "bower_components/promise-polyfill/Promise.js",
+  "bower_components/customevent-polyfill/customevent-polyfill.js",
+  "bower_components/CustomElements/build.json",
+  "bower_components/html-template-polyfill/html-template-polyfill.js",
+  "bower_components/HTMLImports/build.json"
+]

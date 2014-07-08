@@ -1,6 +1,6 @@
 {
   "name": "versal-component-runtime",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "homepage": "https://github.com/Versal/component-runtime",
   "authors": [
     "Versal Team <support@versal.com>"
@@ -20,5 +20,14 @@
     "test",
     "package.json",
     "bower.json"
-  ]
+  ],
+  "devDependencies": {
+    "requestAnimationFrame": "~0.0.20",
+    "promise-polyfill": "~1.1.0",
+    "customevent-polyfill": "~1.0.0",
+    "HTMLImports": "Polymer/HTMLImports#master",
+    "CustomElements": "Polymer/CustomElements#master",
+    "html-template-polyfill": "Versal/html-template-polyfill",
+    "tools": "Polymer/tools#master"
+  }
 }
