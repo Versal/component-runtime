@@ -17,7 +17,7 @@ module.exports = function(grunt) {
           nonull: true
         },
         files: {
-          'dist/runtime.concat.js': readManifest('build.json')
+          'build/runtime.concat.js': readManifest('build.json')
         }
       }
     },
@@ -35,11 +35,11 @@ module.exports = function(grunt) {
         options: {
           sourceMap: true,
           sourceMapName: 'dist/runtime.min.js.map',
-          sourceMapIn: 'dist/runtime.concat.js.map',
+          sourceMapIn: 'build/runtime.concat.js.map',
           sourceMapIncludeSources: true,
         },
         files: {
-          'dist/runtime.min.js': 'dist/runtime.concat.js'
+          'dist/runtime.min.js': 'build/runtime.concat.js'
         }
       }
     }
