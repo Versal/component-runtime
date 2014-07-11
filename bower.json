@@ -22,12 +22,12 @@
     "bower.json"
   ],
   "devDependencies": {
-    "requestAnimationFrame": "~0.0.20",
     "promise-polyfill": "~1.1.0",
     "customevent-polyfill": "~1.0.0",
     "HTMLImports": "Polymer/HTMLImports#master",
     "CustomElements": "Polymer/CustomElements#master",
     "html-template-polyfill": "Versal/html-template-polyfill",
-    "tools": "Polymer/tools#master"
+    "tools": "Polymer/tools#master",
+    "requestAnimationFrame-polyfill": "*"
   }
 }
