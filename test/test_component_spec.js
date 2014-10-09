@@ -2,16 +2,15 @@ describe('test-component', function() {
   //WebComponentsReady event is
   //fired only once after custom elments polyfill finished its start up tasks
   //all subequent upgrades are done by MutationObserver hence no more events
-  var promise = new Promise(function(resolve, reject){
+
+  before(function(done) {
     window.addEventListener('WebComponentsReady', function() {
-      resolve();
+      done();
     });
   });
 
-  beforeEach(function(done) {
-    promise.then(function(){
-      done();
-    });
+  beforeEach(function() {
+    window.detachedCallbackFromGadget = function(){};
   });
 
   it('renders NEW CONTENT instead of the original content', function(done){
@@ -25,23 +24,65 @@ describe('test-component', function() {
       chai.expect(element.innerHTML).to.eq('NEW CONTENT');
       document.body.removeChild(div);
       done();
-    }, 0);
+    }, 100);
   });
 
-  it('fires detachedCallback', function(done){
+  it('fires detachedCallback when directly removing the custom element', function(done){
+    var element = document.createElement('test-component');
+    document.body.appendChild(element);
+
+    setTimeout(function(){
+      window.detachedCallbackFromGadget = function() {
+        done();
+      };
+      document.body.removeChild(element);
+    }, 100);
+
+  });
+
+  it('fires detachedCallback when removing the parent of the custom element', function(done){
     var div = document.createElement('div');
     div.innerHTML = '<test-component data-new-content="NEW CONTENT">Original content</test-component>';
     document.body.appendChild(div);
 
     setTimeout(function(){
-      //need to wait for upgrade to finish
-      var element = document.querySelector('test-component');
-      element.detachedCallback = function(){
-        chai.expect(true).to.eq(true);
+      window.detachedCallbackFromGadget = function() {
         done();
       };
+
       document.body.removeChild(div);
-    }, 0);
+    }, 100);
+
+  });
+
+
+  it('fires detachedCallback when removing the parents of the custom element', function(done){
+    //create a custom element nested in eleven divs
+    var i = 0, tempDiv;
+    var walker = function(input){
+      tempDiv = document.createElement('div');
+      if(i > 10) {
+        tempDiv.innerHTML = '<test-component data-new-content="NEW CONTENT">Original content</test-component>';
+        input.appendChild(tempDiv);
+        return;
+      } else {
+        input.appendChild(tempDiv);
+        i++;
+        walker(tempDiv);
+      }
+    };
+
+    var div = document.createElement('div');
+    walker(div);
+    document.body.appendChild(div);
+
+    setTimeout(function(){
+      window.detachedCallbackFromGadget = function() {
+        done();
+      };
+
+      document.body.removeChild(div);
+    }, 100);
 
   });
 });
