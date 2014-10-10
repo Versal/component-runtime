@@ -1,16 +1,21 @@
 describe('test-component', function() {
-  //WebComponentsReady event is
-  //fired only once after custom elments polyfill finished its start up tasks
-  //all subequent upgrades are done by MutationObserver hence no more events
 
   before(function(done) {
+    //WebComponentsReady event is
+    //fired only once after custom elments polyfill finished its start up tasks
+    //all subequent upgrades are done by MutationObserver hence no more events
     window.addEventListener('WebComponentsReady', function() {
       done();
     });
   });
 
   beforeEach(function() {
+    // this function is called in detachedCallback of the component
     window.detachedCallbackFromGadget = function(){};
+  });
+
+  afterEach(function(){
+    delete window.detachedCallbackFromGadget;
   });
 
   it('renders NEW CONTENT instead of the original content', function(done){
@@ -20,14 +25,16 @@ describe('test-component', function() {
 
     setTimeout(function(){
       //need to wait for upgrade to finish
+      //can set to zero for browsers with native mutation observer
+      //need a longer time for browsers without native mutation observer
       var element = document.querySelector('test-component');
-      chai.expect(element.innerHTML).to.eq('NEW CONTENT');
+      expect(element.innerHTML).to.eq('NEW CONTENT');
       document.body.removeChild(div);
       done();
     }, 100);
   });
 
-  it('fires detachedCallback when directly removing the custom element', function(done){
+  it('fires detachedCallback when removing the custom element', function(done){
     var element = document.createElement('test-component');
     document.body.appendChild(element);
 
@@ -49,7 +56,6 @@ describe('test-component', function() {
       window.detachedCallbackFromGadget = function() {
         done();
       };
-
       document.body.removeChild(div);
     }, 100);
 
@@ -61,7 +67,7 @@ describe('test-component', function() {
     var i = 0, tempDiv;
     var walker = function(input){
       tempDiv = document.createElement('div');
-      if(i > 10) {
+      if(i >= 9) {
         tempDiv.innerHTML = '<test-component data-new-content="NEW CONTENT">Original content</test-component>';
         input.appendChild(tempDiv);
         return;
@@ -80,7 +86,6 @@ describe('test-component', function() {
       window.detachedCallbackFromGadget = function() {
         done();
       };
-
       document.body.removeChild(div);
     }, 100);
 
