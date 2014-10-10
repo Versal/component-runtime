@@ -38,10 +38,10 @@ describe('test-component', function() {
     var element = document.createElement('test-component');
     document.body.appendChild(element);
 
+    window.detachedCallbackFromGadget = function() {
+      done();
+    };
     setTimeout(function(){
-      window.detachedCallbackFromGadget = function() {
-        done();
-      };
       document.body.removeChild(element);
     }, 100);
 
@@ -52,10 +52,10 @@ describe('test-component', function() {
     div.innerHTML = '<test-component data-new-content="NEW CONTENT">Original content</test-component>';
     document.body.appendChild(div);
 
+    window.detachedCallbackFromGadget = function() {
+      done();
+    };
     setTimeout(function(){
-      window.detachedCallbackFromGadget = function() {
-        done();
-      };
       document.body.removeChild(div);
     }, 100);
 
@@ -82,11 +82,40 @@ describe('test-component', function() {
     walker(div);
     document.body.appendChild(div);
 
+    window.detachedCallbackFromGadget = function() {
+      done();
+    };
     setTimeout(function(){
-      window.detachedCallbackFromGadget = function() {
-        done();
-      };
       document.body.removeChild(div);
+    }, 100);
+
+  });
+
+  it('fires detachedCallback when removing and adding back the custom element', function(done){
+    var element = document.createElement('test-component');
+    document.body.appendChild(element);
+
+    var i = 0;
+    window.detachedCallbackFromGadget = function() {
+      i++;  //count number of invocations
+      if(i >= 2) {
+        // only done after the attachedCallback is fired twice or more
+        done();
+      }
+    };
+
+    setTimeout(function(){ //wait for upgrade
+      document.body.removeChild(element);
+
+      //wait for mutation observer to fire
+      //if not setTimeout, then detachedCallback is not fired for the removeChild above
+      setTimeout(function(){
+        document.body.appendChild(element);
+        setTimeout(function(){
+          document.body.removeChild(element);
+        }, 100);
+      }, 100);
+
     }, 100);
 
   });
