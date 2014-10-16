@@ -1,4 +1,6 @@
-# Versal component runtime [![Build Status](https://travis-ci.org/Versal/component-runtime.svg?branch=master)](https://travis-ci.org/Versal/component-runtime)
+# Versal component runtime [![Build Status](https://travis-ci.org/Versal/component-runtime.svg?branch=master)](https://travis-ci.org/Versal/component-runtime) [![Bower version](https://badge.fury.io/bo/versal-component-runtime.svg)](http://badge.fury.io/bo/versal-component-runtime)
+
+
 
 Collection of polyfills for new web technologies, such as web components, for being used in production environments.
 
