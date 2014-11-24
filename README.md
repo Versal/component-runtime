@@ -1,3 +1,5 @@
+# DEPRECATED. Use [Webcomponentsjs](https://github.com/Polymer/webcomponentsjs) instead
+
 # Versal component runtime [![Build Status](https://travis-ci.org/Versal/component-runtime.svg?branch=master)](https://travis-ci.org/Versal/component-runtime) [![Bower version](https://badge.fury.io/bo/versal-component-runtime.svg)](http://badge.fury.io/bo/versal-component-runtime)
 
 
