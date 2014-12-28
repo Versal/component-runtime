@@ -33,10 +33,7 @@ module.exports = function(grunt) {
       },
       Platform: {
         options: {
-          sourceMap: true,
-          sourceMapName: 'dist/runtime.min.js.map',
-          sourceMapIn: 'build/runtime.concat.js.map',
-          sourceMapIncludeSources: true,
+          sourceMap: false
         },
         files: {
           'dist/runtime.min.js': 'build/runtime.concat.js'
