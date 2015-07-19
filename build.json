@@ -1,4 +1,5 @@
 [
+  "bower_components/MutationObservers/build.json",
   "bower_components/requestAnimationFrame-polyfill/requestAnimationFrame.js",
   "bower_components/promise-polyfill/Promise.js",
   "bower_components/customevent-polyfill/customevent-polyfill.js",

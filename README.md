@@ -37,8 +37,8 @@ Set up a BrowserStack account and:
 
     export BROWSER_STACK_USERNAME=... BROWSER_STACK_ACCESS_KEY=...
     npm test
-    
+
 Or install custom karma runners and use them:
-    
-    npm install karma-chrome-runner
+
+    npm install karma-chrome-launcher
     karma start --browsers Chrome --no-single-run

@@ -15,5 +15,9 @@ TestComponentPrototype.attachedCallback = function() {
   this.innerHTML = this.getAttribute('data-new-content');
 };
 
+TestComponentPrototype.detachedCallback = function() {
+  window.detachedCallbackFromGadget();
+};
+
 document.registerElement('test-component', {prototype: TestComponentPrototype});
 </script>

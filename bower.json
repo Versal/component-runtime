@@ -28,6 +28,7 @@
     "CustomElements": "Polymer/CustomElements#master",
     "html-template-polyfill": "Versal/html-template-polyfill",
     "tools": "Polymer/tools#master",
-    "requestAnimationFrame-polyfill": "*"
+    "requestAnimationFrame-polyfill": "*",
+    "MutationObservers": "Polymer/MutationObservers#master"
   }
 }
